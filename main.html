@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Navigation Bar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">Fr13nds</div>
+        <ul class="nav-links">
+            <li><a href="main.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="#contact">MyAccaunt</a></li>
+        </ul>
+        <div class="auth-links">
+            <input type="text" placeholder="Search.." class="SearchBar">
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div> <!-- Dark background overlay -->
+
+    <div class="arrow" id="menu-arrow" onclick="toggleMenu()"></div> <!-- Right Arrow -->
+
+    <div class="menu" id="menu">
+        <div class="menu-content">
+            <ul>
+                <li><a href="#">1. T-shirt</a></li>
+                <li><a href="#">2. Shorts</a></li>
+                <li><a href="#">3. Jacket</a></li>
+                <li><a href="#">4. Hoodie</a></li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="content">
+        <h2 class="H2">- Storys -</h2>
+        <div class="card-container" id="myMenu">
+            <div class="card" onclick="goToDetails('დღეს ვიყავი დამატებიტ ინგლისურზე, შემდეგ მოვედი პროგრამირებაზე ეხლა პროგრამირების გაკვეთილზე ვარ და ვსწავლობ Phyton-ს, პოსტები დაიდება ყოველ სამშაბათ და პარასკევ დღეს.')">დღევანდელი პოსტი</div>
+            
+        </div>
+        <br>
+        <br>
+
+
+        
+    <script>
+
+
+        /* Search */
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const arrow = document.getElementById('menu-arrow');
+            const overlay = document.getElementById('overlay');
+
+            // Toggle menu visibility
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+
+            // Hide or show the arrow based on menu state
+            if (menu.classList.contains('active')) {
+                arrow.style.opacity = '0'; // Hide arrow smoothly
+            } else {
+                arrow.style.opacity = '1'; // Show arrow smoothly
+            }
+        }
+        
+
+        // Close the menu if clicked outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('menu');
+            const arrow = document.getElementById('menu-arrow');
+            const overlay = document.getElementById('overlay');
+
+            if (!menu.contains(event.target) && !arrow.contains(event.target)) {
+                menu.classList.remove('active');
+                overlay.classList.remove('active');
+                arrow.style.opacity = '1'; // Show the arrow again
+            }
+        });
+
+        // Function to redirect to the details page with card information
+        function goToDetails(story) {
+            window.location.href = `Card.html?story=${encodeURIComponent(story)}`;
+        }
+
+
+        function myFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("mySearch");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myMenu");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+            } else {
+            li[i].style.display = "none";
+            }
+            }
+        }
+
+        let lastScrollTop = 0; // Keeps track of last scroll position
+
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+        // Scrolling down
+        navbar.classList.add('hidden');
+        navbar.classList.remove('visible');
+    } else {
+        // Scrolling up
+        navbar.classList.add('visible');
+        navbar.classList.remove('hidden');
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+});
+
+// Ensure the navbar slides in smoothly on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.querySelector('.navbar');
+    setTimeout(() => {
+        navbar.classList.add('visible');
+    }, 100); // Slight delay for initial slide-in effect
+});
+       
+    </script>
+    
+</body>
+</html>
