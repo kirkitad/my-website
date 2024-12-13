@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="css/bpg-nino-mtavruli.css">
+    <style>
+        body {
+            font-family: Arial, ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: "BPG Nino Mtavruli", sans-serif;
+        }
+        .login-container {
+            padding: 105px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-family: "BPG Nino Mtavruli", sans-serif;
+        }
+        .login-container input {
+            display: block;
+            width: 300px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: "BPG Nino Mtavruli", sans-serif;
+        }
+        .login-container button {
+            padding: 10px 137px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: "BPG Nino Mtavruli", sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>ექაუნთის შექმნა</h2>
+        <input type="text" id="firstName" placeholder="სახელი" />
+        <input type="text" id="lastName" placeholder="გვარი" />
+        <input type="number" id="age" placeholder="ასაკი" />
+        <input type="email" id="email" placeholder="მაილი" />
+        <input type="password" id="password" placeholder="პაროლი" />
+        <button onclick="submitLogin()">შექმნა</button>
+    </div>
+
+    <script>
+        function submitLogin() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const age = document.getElementById('age').value;
+            const email = document.getElementById('email').value;
+
+            if (firstName && lastName && age && email) {
+                // Save the user details in localStorage
+                localStorage.setItem('firstName', firstName);
+                localStorage.setItem('lastName', lastName);
+                localStorage.setItem('age', age);
+                localStorage.setItem('email', email);
+                
+                alert('Details saved!');
+
+                // Redirect to main page
+                window.location.href = "main.html";
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+    </script>
+
+</body>
+</html>
