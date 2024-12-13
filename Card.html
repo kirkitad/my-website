@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story</title>
+    <link rel="stylesheet" href="css/bpg-nino-mtavruli.css">
+    <link rel="stylesheet" href="Card.css">
+</head>
+
+<div class="details-container">
+    <h1 id="card-story">Story:</h1>
+</div>
+
+
+
+<div class="navbar">
+    <div class="logo">G-Style</div>
+    <ul class="nav-links">
+        <li><a href="main.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="#contact">MyAccaunt</a></li>
+    </ul>
+    <div class="auth-links">
+        <input type="text" placeholder="Search.." class="SearchBar">
+    </div>
+</div>
+
+
+
+<script>
+    // Function to get URL parameters
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            story: params.get('story')
+        };
+    }
+
+    // Display the card details on the page
+    window.onload = function() {
+        const { story } = getQueryParams();
+        document.getElementById('card-story').textContent = `ისტორია: ${story}`;
+    };
+</script>
